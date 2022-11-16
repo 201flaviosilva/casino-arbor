@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/arbor/static/css/main.e14093a8.css",
+    "main.js": "/arbor/static/js/main.d570d79a.js",
+    "static/js/496.2ced9456.chunk.js": "/arbor/static/js/496.2ced9456.chunk.js",
+    "index.html": "/arbor/index.html",
+    "main.e14093a8.css.map": "/arbor/static/css/main.e14093a8.css.map",
+    "main.d570d79a.js.map": "/arbor/static/js/main.d570d79a.js.map",
+    "496.2ced9456.chunk.js.map": "/arbor/static/js/496.2ced9456.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e14093a8.css",
+    "static/js/main.d570d79a.js"
+  ]
+}
