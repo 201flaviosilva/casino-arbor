@@ -1,2 +1,5 @@
-# arbor
- A tree simulator 🌲🌳
+# Arbor
+
+## Description
+
+A tree simulator 🌲🌳

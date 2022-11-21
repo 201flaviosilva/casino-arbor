@@ -1,0 +1,24 @@
+.buttonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  /* background: black; */
+  color: white;
+  border: 1px solid red;
+  border-radius: 4px;
+  opacity: 0.75;
+  transition: 0.5s;
+}
+
+.buttonIcon:hover {
+  opacity: 1;
+  background: white;
+  color: black;
+  border: 1px solid green;
+  scale: 1.1;
+}
+
+.buttonIcon:active {
+  scale: 1.05;
+}

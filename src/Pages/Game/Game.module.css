@@ -1,0 +1,26 @@
+.gameContainer {
+  margin: 36px 0 20px; /* 36px from the header and 20px from the footer */
+  display: grid;
+  place-content: center;
+}
+
+.actionsPanel {
+  max-width: 200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25px, 45px));
+  gap: 4px;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  margin-right: -150px;
+  padding: 8px 12px;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 0 0 8px red;
+  transition: 0.5s;
+}
+
+.actionsPanel:hover {
+  margin-right: 4px;
+  box-shadow: 0 0 2px green, 0 0 4px green, 0 0 8px green;
+}
