@@ -12,7 +12,7 @@
   "scripts": {
     "clear": "rm -rf build && rm -rf out && rm -rf dist",
     "start": "react-scripts start",
-    "build": "CI=true react-scripts build",
+    "build": "CI='' react-scripts build",
     "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
     "eject": "react-scripts eject",
     "lint": "eslint ./src/",

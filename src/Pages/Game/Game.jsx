@@ -44,7 +44,7 @@ function ActionsPanel({ setModal }) {
 				<GiSettingsKnobs size={ICON_SIZE} />
 			</ButtonIcon>
 			<ButtonIcon>
-				<a href="https://github.com/201flaviosilva/arbor">
+				<a href="https://github.com/201flaviosilva/arbor" target="_blank">
 					<AiFillGithub size={ICON_SIZE} />
 				</a>
 			</ButtonIcon>
