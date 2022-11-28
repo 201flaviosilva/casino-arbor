@@ -1,5 +1,5 @@
 {
-  "short_name": "Arbor",
+  "short_name": "Casino Arbor",
   "name": "A tree simulator",
   "icons": [
     {
@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "http://201flaviosilva.github.io/arbor",
+  "start_url": "http://201flaviosilva.github.io/casino-arbor",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

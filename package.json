@@ -1,8 +1,8 @@
 {
-  "name": "arbor",
+  "name": "casino-arbor",
   "version": "0.1.0",
   "private": false,
-  "homepage": "http://201flaviosilva.github.io/arbor",
+  "homepage": "http://201flaviosilva.github.io/casino-arbor",
   "license": "MIT",
   "author": {
     "name": "Flávio Silva",
@@ -57,9 +57,9 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/201flaviosilva/arbor"
+    "url": "git+https://github.com/201flaviosilva/casino-arbor"
   },
   "bugs": {
-    "url": "https://github.com/201flaviosilva/arbor/issues"
+    "url": "https://github.com/201flaviosilva/casino-arbor/issues"
   }
 }
