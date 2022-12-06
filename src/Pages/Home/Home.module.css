@@ -1,5 +1,5 @@
-.gameContainer {
-  margin: 36px 0 20px; /* 36px from the header and 20px from the footer */
+.homeContainer {
+  margin-top: 36px; /* 36px from the header */
   display: grid;
   place-content: center;
 }
@@ -23,4 +23,10 @@
 .actionsPanel:hover {
   margin-right: 4px;
   box-shadow: 0 0 2px green, 0 0 4px green, 0 0 8px green;
+}
+
+.status {
+  position: fixed;
+  top: 10px;
+  left: 10px;
 }
