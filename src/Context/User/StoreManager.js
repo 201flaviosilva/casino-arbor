@@ -1,11 +1,14 @@
 import store from "store";
 
+const NAME_SPACE = "user-state";
+
 export function getState() {
-	return store.get("state");
+	return store.get(NAME_SPACE);
 }
 
 export function setState(newState) {
-	return store.set("state", newState);
+	store.set(NAME_SPACE, newState);
+	return getState();
 }
 
 export function setCoins(value) {

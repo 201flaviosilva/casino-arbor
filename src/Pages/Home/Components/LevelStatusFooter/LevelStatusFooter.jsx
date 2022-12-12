@@ -1,20 +1,31 @@
-import React from "react";
-import ProgressBar from "@ramonak/react-progress-bar";
+import React, { useState, useEffect } from "react";
 
 import { useTreeState } from "../../../../Context/Tree/TreeState";
-import { getCurrentExperienceLevel, getNextExperienceLevel } from "../../../../Context/Tree/levels";
+import { getCurrentExperienceLevel, getNextExperienceLevel, getCurrentLevel } from "../../../../Context/Tree/levels";
+import ProgressBar from "../../../../Components/ProgressBar";
 
 import styles from "./LevelStatusFooter.module.css";
 
 export default function LevelStatusFooter() {
 	const { treeSate } = useTreeState();
-	// console.log(treeSate, getCurrentExperienceLevel(treeSate.experience), getNextExperienceLevel(treeSate.experience));
+	const [lastLevel, setLastLevel] = useState(-1);
+
+	useEffect(() => {
+		const currentLevel = getCurrentLevel(treeSate.experience);
+
+		if (lastLevel !== currentLevel) {
+			setLastLevel(currentLevel);
+		}
+
+	}, [treeSate.experience]);
+
 
 	return (
 		<div className={styles.container}>
-			<div>
-				<ProgressBar completed={`${getCurrentExperienceLevel(treeSate.experience)}`} maxCompleted={getNextExperienceLevel(treeSate.experience)} />
-			</div>
+			<ProgressBar
+				current={`${getCurrentExperienceLevel(treeSate.experience)}`}
+				end={getNextExperienceLevel(treeSate.experience)}
+			/>
 		</div>
 	)
 }

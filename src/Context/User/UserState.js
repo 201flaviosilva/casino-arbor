@@ -1,7 +1,7 @@
-import React, { useReducer, createContext, useContext } from "react";
+import React, { useReducer, createContext, useContext, useEffect } from "react";
 
-import { getState } from "./StoreManager";
-import { reducer, SET_COINS } from "./Reducer";
+import { getState, setState } from "./StoreManager";
+import { reducer } from "./Reducer";
 
 const initialState = {
 	coins: 0,
@@ -11,6 +11,10 @@ const UserStateContext = createContext();
 
 export default function GameStateProvider({ children }) {
 	const [userSate, dispatch] = useReducer(reducer, getState() || initialState);
+
+	useEffect(() => {
+		if (!getState()) setState(initialState);
+	}, []);
 
 	return (
 		<UserStateContext.Provider value={{ userSate, dispatch }}>

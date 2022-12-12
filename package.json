@@ -20,18 +20,17 @@
     "bump": "npm run build && np --no-tests --any-branch --no-publish"
   },
   "dependencies": {
-    "@ramonak/react-progress-bar": "^5.0.3",
     "201flaviosilva-utils": "^1.2.10",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.6.0",
+    "react-icons": "^4.7.1",
     "react-scripts": "5.0.1",
     "store": "^2.0.12"
   },
   "devDependencies": {
     "depcheck": "^1.4.3",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.31.11",
     "np": "^7.6.2",
