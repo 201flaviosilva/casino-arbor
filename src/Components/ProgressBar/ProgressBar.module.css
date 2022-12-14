@@ -6,8 +6,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  background-color: red;
+  background-color: grey;
+  border: 2px solid black;
   border-radius: 4px;
+  box-shadow: 0 4px 8px grey, 0 -4px 12px grey;
 }
 
 .bar {
@@ -15,8 +17,28 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: green;
   border-radius: 4px;
+  box-shadow: 0 0 8px #fca311, 0 0 8px #fcbc51;
+  transition: 0.5s;
+  background-color: #fcbc51;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    #fca311 40px,
+    #fca311 80px
+  );
+  background-position-x: 0;
+  animation: slide 20s infinite linear;
+}
+
+@keyframes slide {
+  from {
+    background-position-x: -100px;
+  }
+  to {
+    background-position-x: 100vw;
+  }
 }
 
 .text {

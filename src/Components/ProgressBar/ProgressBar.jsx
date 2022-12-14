@@ -13,5 +13,5 @@ export default function ProgressBar({ start = 0, current, end }) {
 			<span className={styles.text}>{current}</span>
 			<span className={styles.text}>{end}</span>
 		</div>
-	)
+	);
 }

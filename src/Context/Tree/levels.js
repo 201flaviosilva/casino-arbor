@@ -7,7 +7,6 @@ export function getCurrentExperienceLevel(experience) {
 
 export function getNextExperienceLevel(experience) {
 	const f = fibonacciLevel(experience);
-	console.log(f[f.length - 1]);
 	return f[f.length - 1] - getCurrentExperienceLevel(experience);
 }
 

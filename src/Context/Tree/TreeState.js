@@ -24,7 +24,6 @@ export default function TreeSateStateProvider({ children }) {
 		const endTime = moment(new Date());
 
 		const duration = moment.duration(endTime.diff(startTime));
-		// console.log(duration.asMinutes());
 
 		if (duration.asMinutes() >= 1) {
 			const minutes = Math.floor(duration.asMinutes());
@@ -32,7 +31,12 @@ export default function TreeSateStateProvider({ children }) {
 			userDispatch({ type: SET_COINS, payload: userSate.coins + getCurrentLevel(treeSate.experience) * minutes });
 			dispatch({ type: SET_LAST_UPDATE, payload: new Date() });
 		}
-	}, [treeSate, userSate]);
+
+		// --- Debug only
+		sessionStorage.setItem("duration", duration.asMinutes());
+		sessionStorage.setItem("totalTreeExperience", treeSate.experience);
+		// ---
+	}, [treeSate.experience, treeSate.lastUpdate, userDispatch, userSate.coins]);
 
 	useEffect(() => {
 		if (!getState()) setState(initialState);

@@ -2,6 +2,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.validate": ["javascript"],
+  "eslint.validate": ["javascript", "javascriptreact", "html"],
   "liveServer.settings.port": 5510
 }
