@@ -1,26 +1,37 @@
 import React, { useState } from "react";
-import { AiFillGithub, AiOutlineThunderbolt } from "react-icons/ai";
-import { GiUpgrade, GiSettingsKnobs, GiFamilyTree, GiTwoCoins } from "react-icons/gi";
-import { ImStatsBars } from "react-icons/im";
-import { IoMdHelpBuoy } from "react-icons/io";
+import { AiOutlineThunderbolt } from "react-icons/ai";
+import { GiTwoCoins } from "react-icons/gi";
 
-import ButtonIcon from "../../Components/ButtonIcon";
 import { useUserState } from "../../Context/User/UserState";
 import TreeSateStateProvider from "../../Context/Tree/TreeState";
 import { useTreeState } from "../../Context/Tree/TreeState";
 import { getCurrentLevel } from "../../Context/Tree/levels";
 
+import Modal from "../../Components/Modal";
+
 import styles from "./Home.module.css";
-import Tree from "./Components/Tree";
-import Upgrade from "./Components/Upgrade";
+
+import ActionsPanel from "./Components/Panels/ActionsPanel";
+import GamesPanel from "./Components/Panels/GamesPanel";
 import LevelStatusFooter from "./Components/LevelStatusFooter";
+import Tree from "./Components/Tree";
+
+// Actions Modals
+import Upgrade from "./Components/Upgrade";
+
+// Games Modals
+import GuessTheNumber from "./Games/GuessTheNumber";
 
 const MODAL_NAMES = {
+	// Actions
 	upgrade: "Upgrade",
 	stats: "Stats",
 	evolutionTree: "EvolutionTree",
 	settings: "Settings",
 	help: "Help",
+
+	// Games
+	guessTheNumber: "GuessTheNumber",
 };
 
 const ICON_SIZE = 25;
@@ -33,11 +44,15 @@ export default function Home() {
 			<div className={styles.homeContainer}>
 				<Status />
 				<Tree />
-				<ActionsPanel setModal={setModal} />
+				<ActionsPanel setModal={setModal} MODAL_NAMES={MODAL_NAMES} />
+				<GamesPanel setModal={setModal} MODAL_NAMES={MODAL_NAMES} />
 				<LevelStatusFooter />
 			</div>
 
-			{modal === MODAL_NAMES.upgrade && <Upgrade setModal={setModal} />}
+			{modal && <Modal setIsOpen={setModal} title={modal}>
+				{modal === MODAL_NAMES.upgrade && <Upgrade />}
+				{modal === MODAL_NAMES.guessTheNumber && <GuessTheNumber />}
+			</Modal>}
 		</TreeSateStateProvider>
 	);
 }
@@ -60,40 +75,3 @@ function Status() {
 	);
 }
 
-function ActionsPanel({ setModal }) {
-	return (
-		<aside className={styles.actionsPanel}>
-			{/* Upgrade */}
-			<ButtonIcon onClick={() => setModal(MODAL_NAMES.upgrade)} title="Upgrade">
-				<GiUpgrade size={ICON_SIZE} />
-			</ButtonIcon>
-
-			{/* Stats */}
-			<ButtonIcon title="Stats">
-				<ImStatsBars size={ICON_SIZE} />
-			</ButtonIcon>
-
-			{/* Evolution Tree */}
-			<ButtonIcon title="Evolution Tree">
-				<GiFamilyTree size={ICON_SIZE} />
-			</ButtonIcon>
-
-			{/* Settings */}
-			<ButtonIcon title="Settings">
-				<GiSettingsKnobs size={ICON_SIZE} />
-			</ButtonIcon>
-
-			{/* GitHub */}
-			<ButtonIcon title="GitHub">
-				<a href="https://github.com/201flaviosilva/casino-arbor" target="_blank" rel="noreferrer">
-					<AiFillGithub size={ICON_SIZE} />
-				</a>
-			</ButtonIcon>
-
-			{/* Help */}
-			<ButtonIcon title="Help">
-				<IoMdHelpBuoy size={ICON_SIZE} />
-			</ButtonIcon>
-		</aside>
-	);
-}

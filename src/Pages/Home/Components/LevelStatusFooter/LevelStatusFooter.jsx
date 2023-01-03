@@ -17,7 +17,7 @@ export default function LevelStatusFooter() {
 			setLastLevel(currentLevel);
 		}
 
-	}, [treeSate.experience]);
+	}, [lastLevel, treeSate.experience]);
 
 
 	return (
@@ -27,5 +27,5 @@ export default function LevelStatusFooter() {
 				end={getNextExperienceLevel(treeSate.experience)}
 			/>
 		</div>
-	)
+	);
 }

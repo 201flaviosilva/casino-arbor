@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 
-import "201flaviosilva-utils/build/reset.min.css";
+import "css-free-style/build/reset.min.css";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

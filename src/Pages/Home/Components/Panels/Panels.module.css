@@ -1,0 +1,38 @@
+.basePanel {
+  max-width: 400px;
+  position: fixed;
+  top: 50%;
+  padding: 8px 12px;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 0 0 8px red;
+  transition: 0.5s;
+}
+
+.basePanel:hover {
+  margin: 0 4px;
+  transform: translateX(0%);
+  box-shadow: 0 0 2px green, 0 0 4px green, 0 0 8px green;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+}
+
+.buttonsContainer {
+  min-width: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25px, 45px));
+  gap: 4px;
+}
+
+.actionsPanel {
+  right: 0;
+  transform: translateX(90%);
+}
+
+.gamePanel {
+  left: 0;
+  transform: translateX(-90%);
+}

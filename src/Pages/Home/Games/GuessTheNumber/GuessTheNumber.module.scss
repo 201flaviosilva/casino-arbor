@@ -1,0 +1,84 @@
+$YELLOW: rgba(255, 255, 0, 0.75);
+$GREEN-NEON: rgba(0, 100, 0, 0.75);
+$RED-NEON: rgba(100, 0, 0, 0.75);
+$BLUE-NEON: rgb(0, 55, 255);
+
+$FONT-FAMILY: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
+@mixin neon-border($baseColor) {
+  border: 1px solid $baseColor;
+}
+
+@mixin neon-box-shadow($baseColor) {
+  box-shadow: 0 0 2px $baseColor, 0 0 4px $baseColor, 0 0 8px $baseColor,
+    0 0 8px $baseColor inset;
+}
+
+@mixin neon($baseColor) {
+  @include neon-border($baseColor);
+  @include neon-box-shadow($baseColor);
+}
+
+.menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: radial-gradient(
+    circle,
+    rgba(0, 100, 0, 0.5) 0%,
+    rgba(225, 225, 225, 0.5) 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+}
+
+.questionBTN {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.difficultySelection,
+.betController {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+  border-radius: 4px;
+  @include neon($BLUE-NEON);
+  background-color: rgba(0, 175, 255, 0.75);
+  transition: 0.5s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.difficultyButtonSelected {
+  @include neon($GREEN-NEON);
+  transform: scale(1.25);
+}
+
+.betController {
+  & > span {
+    text-align: center;
+    font-size: 20px;
+    font-family: $FONT-FAMILY;
+  }
+
+  & > button {
+    @include neon($GREEN-NEON);
+
+    &:hover {
+      background-color: $YELLOW;
+    }
+
+    &:disabled {
+      @include neon($RED-NEON);
+      background-color: rgba(255, 0, 0, 0.75);
+    }
+  }
+}

@@ -12,6 +12,6 @@ export function reducer(state, { type, payload }) {
 			};
 
 		default:
-			throw new Error(`Unhandled action type: ${type}`)
+			throw new Error(`Unhandled action type: ${type}`);
 	}
 }
