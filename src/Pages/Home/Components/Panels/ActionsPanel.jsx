@@ -6,11 +6,13 @@ import { IoMdHelpBuoy } from "react-icons/io";
 
 import ButtonIcon from "../../../../Components/ButtonIcon";
 
+import MODAL_NAMES from "../../ModalNames";
+
 import styles from "./Panels.module.css";
 
 const ICON_SIZE = 25;
 
-export default function ActionsPanel({ setModal, MODAL_NAMES }) {
+export default function ActionsPanel({ setModal }) {
 	return (
 		<aside className={`${styles.basePanel} ${styles.actionsPanel}`}>
 			<h2 className={styles.title}>Actions</h2>

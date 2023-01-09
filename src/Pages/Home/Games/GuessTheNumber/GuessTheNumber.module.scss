@@ -19,66 +19,145 @@ $FONT-FAMILY: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   @include neon-box-shadow($baseColor);
 }
 
-.menu {
+.helpCursor {
+  cursor: help;
+}
+
+.disabledButton {
+  opacity: 0.5;
+  &:hover {
+    transform: scale(1);
+  }
+}
+
+.menu,
+.game {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+
+.menu {
   background: radial-gradient(
     circle,
     rgba(0, 100, 0, 0.5) 0%,
     rgba(225, 225, 225, 0.5) 50%,
     rgba(255, 255, 255, 0.5) 100%
   );
-}
 
-.questionBTN {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.difficultySelection,
-.betController {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2px 4px;
-  border-radius: 4px;
-  @include neon($BLUE-NEON);
-  background-color: rgba(0, 175, 255, 0.75);
-  transition: 0.5s;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-}
-
-.difficultyButtonSelected {
-  @include neon($GREEN-NEON);
-  transform: scale(1.25);
-}
-
-.betController {
-  & > span {
-    text-align: center;
-    font-size: 20px;
-    font-family: $FONT-FAMILY;
+  .questionBTN {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
-  & > button {
-    @include neon($GREEN-NEON);
+  .difficultySelection,
+  .betController {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 4px;
+    border-radius: 4px;
+    @include neon($BLUE-NEON);
+    background-color: rgba(0, 175, 255, 0.75);
+    transition: 0.5s;
 
     &:hover {
-      background-color: $YELLOW;
+      transform: scale(1.05);
+    }
+  }
+
+  .difficultyButtonSelected {
+    @include neon($GREEN-NEON);
+    transform: scale(1.25);
+  }
+
+  .betController {
+    & > span {
+      text-align: center;
+      font-size: 20px;
+      font-family: $FONT-FAMILY;
     }
 
-    &:disabled {
-      @include neon($RED-NEON);
-      background-color: rgba(255, 0, 0, 0.75);
+    & > button {
+      @include neon($GREEN-NEON);
+
+      &:hover {
+        background-color: $YELLOW;
+      }
+
+      &:disabled {
+        @include neon($RED-NEON);
+        background-color: rgba(255, 0, 0, 0.75);
+      }
+    }
+  }
+}
+
+.game {
+  background: radial-gradient(
+    circle,
+    rgba(100, 0, 0, 0.5) 0%,
+    rgba(225, 225, 225, 0.5) 50%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+
+  .helpExit {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    & > * {
+      margin-top: 4px;
+    }
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  form.userGuess {
+    width: 75%;
+    display: flex;
+    align-items: center;
+
+    input {
+      flex: 1;
+      height: 100%;
+      margin-right: 8px;
+      @include neon($BLUE-NEON);
+    }
+  }
+
+  ul.attemptsList {
+    max-height: 500px;
+    min-height: 250px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center safe;
+    overflow: auto;
+
+    p {
+      font-size: 30px;
+      font-weight: 900;
+      color: $RED-NEON;
+    }
+
+    li {
+      width: 1px;
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 20px;
+        font-weight: 900;
+      }
     }
   }
 }

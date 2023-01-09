@@ -3,11 +3,13 @@ import { GiWizardFace } from "react-icons/gi";
 
 import ButtonIcon from "../../../../Components/ButtonIcon";
 
+import MODAL_NAMES from "../../ModalNames";
+
 import styles from "./Panels.module.css";
 
 const ICON_SIZE = 25;
 
-export default function GamesPanel({ setModal, MODAL_NAMES }) {
+export default function GamesPanel({ setModal }) {
 	return (
 		<aside className={`${styles.basePanel} ${styles.gamePanel}`}>
 			<h2 className={styles.title}>Games</h2>

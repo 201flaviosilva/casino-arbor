@@ -22,17 +22,7 @@ import Upgrade from "./Components/Upgrade";
 // Games Modals
 import GuessTheNumber from "./Games/GuessTheNumber";
 
-const MODAL_NAMES = {
-	// Actions
-	upgrade: "Upgrade",
-	stats: "Stats",
-	evolutionTree: "EvolutionTree",
-	settings: "Settings",
-	help: "Help",
-
-	// Games
-	guessTheNumber: "GuessTheNumber",
-};
+import MODAL_NAMES from "./ModalNames";
 
 const ICON_SIZE = 25;
 
@@ -44,8 +34,8 @@ export default function Home() {
 			<div className={styles.homeContainer}>
 				<Status />
 				<Tree />
-				<ActionsPanel setModal={setModal} MODAL_NAMES={MODAL_NAMES} />
-				<GamesPanel setModal={setModal} MODAL_NAMES={MODAL_NAMES} />
+				<ActionsPanel setModal={setModal} />
+				<GamesPanel setModal={setModal} />
 				<LevelStatusFooter />
 			</div>
 
