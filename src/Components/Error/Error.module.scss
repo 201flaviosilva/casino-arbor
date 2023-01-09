@@ -1,0 +1,57 @@
+$WHITE: #fff;
+$RED_BASE: #f00;
+$RED_OPACITY: rgba(255, 0, 0, 0.5);
+
+@mixin neon($baseColor, $secondColor, $border: black) {
+  color: $secondColor;
+  text-shadow:
+    // Border
+    -1px 0px $border, 1px 0px $border, 0px -1px $border, 0px 1px $border,
+    // Second
+    0 0 5px $secondColor,
+    0 0 10px $secondColor, 0 0 20px $secondColor,
+    // Base
+    0 0 40px $baseColor,
+    0 0 80px $baseColor, 0 0 90px $baseColor, 0 0 100px $baseColor,
+    0 0 150px $baseColor;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1,
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    @include neon($RED_BASE, $WHITE);
+    transition: 0.25s;
+    animation: neonAnimation 2s infinite;
+  }
+
+  h1 {
+    font-size: 75px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+}
+
+@keyframes neonAnimation {
+  0%,
+  40%,
+  60%,
+  100% {
+    @include neon($RED_BASE, $WHITE);
+  }
+  50% {
+    @include neon($RED_OPACITY, #878787, #ffffff);
+  }
+}
