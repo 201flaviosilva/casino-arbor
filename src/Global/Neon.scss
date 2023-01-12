@@ -1,0 +1,27 @@
+@mixin neon-border($baseColor) {
+  border: 1px solid $baseColor;
+}
+
+@mixin neon-box-shadow($baseColor) {
+  box-shadow: 0 0 2px $baseColor, 0 0 4px $baseColor, 0 0 8px $baseColor,
+    0 0 8px $baseColor inset;
+}
+
+@mixin neon-text($baseColor, $secondColor, $border: black) {
+  color: $secondColor;
+  text-shadow:
+    // Border
+    -1px 0px $border, 1px 0px $border, 0px -1px $border, 0px 1px $border,
+    // Second
+    0 0 5px $secondColor,
+    0 0 10px $secondColor, 0 0 20px $secondColor,
+    // Base
+    0 0 40px $baseColor,
+    0 0 80px $baseColor, 0 0 90px $baseColor, 0 0 100px $baseColor,
+    0 0 150px $baseColor;
+}
+
+@mixin neon($baseColor) {
+  @include neon-border($baseColor);
+  @include neon-box-shadow($baseColor);
+}

@@ -1,3 +1,5 @@
+@import "../../../../Global/Neon.scss";
+
 $YELLOW: rgba(255, 255, 0, 0.75);
 $GREEN-NEON: rgba(0, 100, 0, 0.75);
 $RED-NEON: rgba(100, 0, 0, 0.75);
@@ -5,26 +7,13 @@ $BLUE-NEON: rgb(0, 55, 255);
 
 $FONT-FAMILY: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 
-@mixin neon-border($baseColor) {
-  border: 1px solid $baseColor;
-}
-
-@mixin neon-box-shadow($baseColor) {
-  box-shadow: 0 0 2px $baseColor, 0 0 4px $baseColor, 0 0 8px $baseColor,
-    0 0 8px $baseColor inset;
-}
-
-@mixin neon($baseColor) {
-  @include neon-border($baseColor);
-  @include neon-box-shadow($baseColor);
-}
-
 .helpCursor {
   cursor: help;
 }
 
-.disabledButton {
+.disabled {
   opacity: 0.5;
+
   &:hover {
     transform: scale(1);
   }
@@ -116,8 +105,10 @@ $FONT-FAMILY: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     }
   }
 
-  h2 {
-    text-align: center;
+  .header {
+    & > * {
+      text-align: center;
+    }
   }
 
   form.userGuess {

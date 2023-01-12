@@ -9,7 +9,7 @@ import { getCurrentLevel } from "../../Context/Tree/levels";
 
 import Modal from "../../Components/Modal";
 
-import styles from "./Home.module.css";
+import styles from "./Home.module.scss";
 
 import ActionsPanel from "./Components/Panels/ActionsPanel";
 import GamesPanel from "./Components/Panels/GamesPanel";
@@ -54,11 +54,11 @@ function Status() {
 	return (
 		<div className={styles.status}>
 			<p>
-				<span><GiTwoCoins size={ICON_SIZE} /></span>
+				<span className={styles.icon}><GiTwoCoins size={ICON_SIZE} /></span>
 				<span>{userSate.coins}</span>
 			</p>
 			<p>
-				<span><AiOutlineThunderbolt size={ICON_SIZE} /></span>
+				<span className={styles.icon}><AiOutlineThunderbolt size={ICON_SIZE} /></span>
 				<span>{getCurrentLevel(treeSate.experience)}</span>
 			</p>
 		</div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Swal from "sweetalert2";
 import { fibonacciUntil, randomInt } from "201flaviosilva-utils";
+import { clamp } from "201flaviosilva-utils/src/Maths";
 import { BiLike } from "react-icons/bi";
 import { BsEmojiNeutral, BsQuestion } from "react-icons/bs";
 import { FaBaby, FaRegHandPointDown, FaRegHandPointUp } from "react-icons/fa";
@@ -14,7 +15,9 @@ import ButtonIcon from "../../../../Components/ButtonIcon";
 import styles from "./GuessTheNumber.module.scss";
 import Error from "../../../../Components/Error/Error";
 
+
 const AVAILABLE_VALUES = [...new Set(fibonacciUntil(1000))];
+const WIN_MULTIPLIER = [32, 16, 8, 4, 2, 1, 0.5, 0.25, 0.125];
 const ICON_SIZE = 25;
 const WINDOWS = {
 	menu: "Menu",
@@ -26,6 +29,18 @@ const DIFFICULTY = {
 	Normal: 100,
 	Hard: 1000,
 };
+
+const Toast = Swal.mixin({
+	toast: true,
+	position: "top-end",
+	showConfirmButton: false,
+	timer: 3000,
+	timerProgressBar: true,
+	didOpen: toast => {
+		toast.addEventListener("mouseenter", Swal.stopTimer);
+		toast.addEventListener("mouseleave", Swal.resumeTimer);
+	}
+});
 
 export default function GuessTheNumber() {
 	const [currentWindow, setCurrentWindow] = useState(WINDOWS.menu);
@@ -58,20 +73,57 @@ export default function GuessTheNumber() {
 }
 
 function Game({ difficulty, setCurrentWindow, betValue }) {
-	const maxNumber = DIFFICULTY[difficulty];
+	const { userSate, dispatch } = useUserState();
+
 	const [userNumber, setUserNumber] = useState(0);
 	const [attemptsList, setAttemptsList] = useState([]);
 	const [hideNumber, setHideNumber] = useState(0);
+	const [isGameEnded, setIsGameEnded] = useState(false);
+
+	const calcWinValue = useCallback(() =>
+		WIN_MULTIPLIER[clamp(attemptsList.length, 0, WIN_MULTIPLIER.length - 1)] * betValue,
+		[attemptsList.length, betValue]);
+
+	const [winValue, setWinValue] = useState(calcWinValue());
+
+	const maxNumber = DIFFICULTY[difficulty];
 
 	useEffect(() => {
 		setHideNumber(randomInt(maxNumber));
 	}, [difficulty, maxNumber]);
+	// useEffect(() => console.log(hideNumber), [hideNumber]); // Debug
+
+	const calcPopUp = useCallback(() => {
+		if (userNumber < hideNumber) Toast.fire({ icon: "info", title: "Hidden number is BIGGER" });
+		else if (userNumber > hideNumber) Toast.fire({ icon: "info", title: "Hidden number is LOWER" });
+		else Toast.fire({ icon: "success", title: "Nice one" });
+	}, [hideNumber, userNumber]);
+
+	const onExit = useCallback(() => setCurrentWindow(WINDOWS.menu), [setCurrentWindow]);
 
 	const onSubmit = useCallback((event) => {
 		event.preventDefault();
+		if (isGameEnded) return;
+
 		setAttemptsList([userNumber, ...attemptsList]);
-		setUserNumber(0);
-	}, [attemptsList, userNumber]);
+		calcPopUp(userNumber);
+
+		if (Number(userNumber) !== hideNumber) {
+			setUserNumber(0);
+			setWinValue(calcWinValue());
+		} else {
+			setIsGameEnded(true);
+			dispatch({ type: SET_COINS, payload: userSate.coins + winValue });
+			Swal.fire({
+				icon: "success",
+				title: `YOU WON ${winValue}`,
+				text: `Nice you found the hidden number ${hideNumber}, and you won ${winValue}`,
+				allowOutsideClick: false,
+				confirmButtonText: "Back to Menu",
+			}).then((result) => { if (result.isConfirmed) onExit(); });
+		}
+
+	}, [attemptsList, calcPopUp, calcWinValue, dispatch, hideNumber, isGameEnded, onExit, userNumber, userSate.coins, winValue]);
 
 	const onClickHelp = useCallback(() => {
 		Swal.fire({
@@ -81,22 +133,11 @@ function Game({ difficulty, setCurrentWindow, betValue }) {
 		});
 	}, [maxNumber]);
 
-	function onExit() {
-		setCurrentWindow(WINDOWS.menu);
-	}
-
 	function HandIcon({ attempt }) {
-		if (attempt < hideNumber) {
-			return <FaRegHandPointUp size={ICON_SIZE} title="Hidden number is BIGGER" />;
-		} else if (attempt > hideNumber) {
-			return <FaRegHandPointDown size={ICON_SIZE} title="Hidden number is LOWER" />;
-		} else {
-			Swal.fire({ title: "Nice!", icon: "success" });
-			return <BiLike size={ICON_SIZE} title="Nice one" />;
-		}
+		if (attempt < hideNumber) return <FaRegHandPointUp size={ICON_SIZE} title="Hidden number is BIGGER" />;
+		else if (attempt > hideNumber) return <FaRegHandPointDown size={ICON_SIZE} title="Hidden number is LOWER" />;
+		else return <BiLike size={ICON_SIZE} title="Nice one" />;
 	}
-
-	const numberFound = Number(attemptsList[0]) === hideNumber;
 
 	return (
 		<div className={styles.game}>
@@ -106,21 +147,27 @@ function Game({ difficulty, setCurrentWindow, betValue }) {
 				<ButtonIcon
 					onClick={onExit}
 					title="Exit"
-					disabled={!numberFound}
-					className={!numberFound && styles.disabledButton}
+					disabled={isGameEnded}
+					className={isGameEnded && styles.disabled}
 				><GiExitDoor size={ICON_SIZE} /></ButtonIcon>
 			</div>
 
-			<h2>Guess the number between 0 and {maxNumber}</h2>
+			<div className={styles.header}>
+				<h2>Wining value: {winValue}</h2>
+				<h3>Guess the number between 0 and {maxNumber}</h3>
+			</div>
+
 			<form onSubmit={onSubmit} className={styles.userGuess}>
 				<input
 					type="number"
-					min="0"
+					min={0}
 					max={maxNumber}
 					value={userNumber}
 					onChange={(e) => setUserNumber(e.target.value)}
+					disabled={isGameEnded}
+					className={isGameEnded && styles.disabled}
 				/>
-				<ButtonIcon type="submit"><GoCheck size={ICON_SIZE} /></ButtonIcon>
+				<ButtonIcon type="submit" disabled={isGameEnded} className={isGameEnded && styles.disabled}><GoCheck size={ICON_SIZE} /></ButtonIcon>
 			</form>
 
 			<ul className={styles.attemptsList}>
