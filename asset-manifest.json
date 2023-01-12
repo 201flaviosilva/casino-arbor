@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/casino-arbor/static/css/main.263c9278.css",
-    "main.js": "/casino-arbor/static/js/main.9a7bc84e.js",
+    "main.css": "/casino-arbor/static/css/main.47cd3c7b.css",
+    "main.js": "/casino-arbor/static/js/main.e0c620e0.js",
     "static/js/496.c4df0413.chunk.js": "/casino-arbor/static/js/496.c4df0413.chunk.js",
     "index.html": "/casino-arbor/index.html",
-    "main.263c9278.css.map": "/casino-arbor/static/css/main.263c9278.css.map",
-    "main.9a7bc84e.js.map": "/casino-arbor/static/js/main.9a7bc84e.js.map",
+    "main.47cd3c7b.css.map": "/casino-arbor/static/css/main.47cd3c7b.css.map",
+    "main.e0c620e0.js.map": "/casino-arbor/static/js/main.e0c620e0.js.map",
     "496.c4df0413.chunk.js.map": "/casino-arbor/static/js/496.c4df0413.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.263c9278.css",
-    "static/js/main.9a7bc84e.js"
+    "static/css/main.47cd3c7b.css",
+    "static/js/main.e0c620e0.js"
   ]
 }
