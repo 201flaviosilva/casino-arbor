@@ -3,11 +3,8 @@ import { AiFillGithub } from "react-icons/ai";
 import { GiUpgrade, GiSettingsKnobs, GiFamilyTree } from "react-icons/gi";
 import { ImStatsBars } from "react-icons/im";
 import { IoMdHelpBuoy } from "react-icons/io";
-
 import ButtonIcon from "../../../../Components/ButtonIcon";
-
 import MODAL_NAMES from "../../ModalNames";
-
 import styles from "./Panels.module.css";
 
 const ICON_SIZE = 25;

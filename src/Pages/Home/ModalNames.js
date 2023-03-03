@@ -8,5 +8,6 @@ const MODAL_NAMES = {
 
 	// Games
 	guessTheNumber: "GuessTheNumber",
+	coinFlip: "CoinFlip",
 };
 export default MODAL_NAMES;

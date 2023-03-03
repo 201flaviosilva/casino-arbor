@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { AiOutlineThunderbolt } from "react-icons/ai";
-import { GiTwoCoins } from "react-icons/gi";
 import Modal from "../../Components/Modal";
-import { getCurrentLevel } from "../../Context/Tree/levels";
-import TreeSateStateProvider, { useTreeState } from "../../Context/Tree/TreeState";
-import { useUserState } from "../../Context/User/UserState";
+import TreeSateStateProvider from "../../Context/Tree/TreeState";
 import LevelStatusFooter from "./Components/LevelStatusFooter";
 import ActionsPanel from "./Components/Panels/ActionsPanel";
 import GamesPanel from "./Components/Panels/GamesPanel";
+import Status from "./Components/Status";
 import Tree from "./Components/Tree";
 import Upgrade from "./Components/Upgrade";
+import CoinFlip from "./Games/CoinFlip";
 import GuessTheNumber from "./Games/GuessTheNumber";
 import styles from "./Home.module.scss";
 import MODAL_NAMES from "./ModalNames";
-
-const ICON_SIZE = 25;
 
 export default function Home() {
 	const [modal, setModal] = useState(null);
@@ -29,29 +25,15 @@ export default function Home() {
 				<LevelStatusFooter />
 			</div>
 
-			{modal && <Modal setIsOpen={setModal} title={modal}>
-				{modal === MODAL_NAMES.upgrade && <Upgrade />}
-				{modal === MODAL_NAMES.guessTheNumber && <GuessTheNumber />}
-			</Modal>}
+			{
+				modal && <Modal setIsOpen={setModal} title={modal}>
+					{modal === MODAL_NAMES.upgrade && <Upgrade />}
+					{modal === MODAL_NAMES.guessTheNumber && <GuessTheNumber />}
+					{modal === MODAL_NAMES.coinFlip && <CoinFlip />}
+				</Modal>
+			}
+
 		</TreeSateStateProvider>
-	);
-}
-
-function Status() {
-	const { userSate } = useUserState();
-	const { treeSate } = useTreeState();
-
-	return (
-		<div className={styles.status}>
-			<p>
-				<span className={styles.icon}><GiTwoCoins size={ICON_SIZE} /></span>
-				<span>{userSate.coins}</span>
-			</p>
-			<p>
-				<span className={styles.icon}><AiOutlineThunderbolt size={ICON_SIZE} /></span>
-				<span>{getCurrentLevel(treeSate.experience)}</span>
-			</p>
-		</div>
 	);
 }
 

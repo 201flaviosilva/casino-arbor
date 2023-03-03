@@ -6,34 +6,6 @@
   place-content: center;
 }
 
-.status {
-  position: fixed;
-  top: 2px;
-  left: 2px;
-  padding: 4px 8px 4px 2px;
-  z-index: 10000;
-  background-color: black;
-  border: 1px solid red;
-  box-shadow: 0 0 20px red;
-  animation: shadowAnimation infinite 10s;
-  border-radius: 4px;
-  opacity: 0.75;
-
-  * {
-    color: white;
-  }
-
-  p {
-    display: flex;
-    align-items: center;
-
-    .icon {
-      margin-left: 0;
-      margin-right: 4px;
-    }
-  }
-}
-
 @keyframes shadowAnimation {
   0% {
     border: 1px solid red;

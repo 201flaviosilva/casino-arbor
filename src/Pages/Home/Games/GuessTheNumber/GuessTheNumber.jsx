@@ -1,20 +1,17 @@
-import React, { useState, useEffect, useCallback } from "react";
-import Swal from "sweetalert2";
 import { fibonacciUntil, randomInt } from "201flaviosilva-utils";
 import { clamp } from "201flaviosilva-utils/src/Maths";
+import React, { useCallback, useEffect, useState } from "react";
 import { BiLike } from "react-icons/bi";
 import { BsEmojiNeutral, BsQuestion } from "react-icons/bs";
 import { FaBaby, FaRegHandPointDown, FaRegHandPointUp } from "react-icons/fa";
-import { GiMuscleUp, GiRun, GiExitDoor } from "react-icons/gi";
-import { GoDash, GoPlus, GoCheck, GoArrowRight } from "react-icons/go";
-
+import { GiExitDoor, GiMuscleUp, GiRun } from "react-icons/gi";
+import { GoArrowRight, GoCheck, GoDash, GoPlus } from "react-icons/go";
+import Swal from "sweetalert2";
+import ButtonIcon from "../../../../Components/ButtonIcon";
+import Error from "../../../../Components/Error/Error";
 import { SET_COINS } from "../../../../Context/User/Reducer";
 import { useUserState } from "../../../../Context/User/UserState";
-import ButtonIcon from "../../../../Components/ButtonIcon";
-
 import styles from "./GuessTheNumber.module.scss";
-import Error from "../../../../Components/Error/Error";
-
 
 const AVAILABLE_VALUES = [...new Set(fibonacciUntil(1000))];
 const WIN_MULTIPLIER = [32, 16, 8, 4, 2, 1, 0.5, 0.25, 0.125];
