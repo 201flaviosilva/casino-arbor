@@ -9,16 +9,20 @@
   border-radius: 4px;
   opacity: 0.75;
   transition: 0.5s;
-}
 
-.buttonIcon:hover {
-  opacity: 1;
-  background: white;
-  color: black;
-  border: 1px solid green;
-  scale: 1.1;
-}
+  &:hover {
+    opacity: 1;
+    background: white;
+    color: black;
+    border: 1px solid green;
+    scale: 1.1;
+  }
 
-.buttonIcon:active {
-  scale: 1.05;
+  &:active {
+    scale: 1.05;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }

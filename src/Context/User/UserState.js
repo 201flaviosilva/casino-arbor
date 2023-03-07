@@ -1,9 +1,10 @@
-import React, { useReducer, createContext, useContext, useEffect } from "react";
-
-import { getState, setState } from "./StoreManager";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
+import pkg from "../../../package.json";
 import { reducer } from "./Reducer";
+import { getState, setState } from "./StoreManager";
 
 const initialState = {
+	version: pkg.version,
 	coins: 0,
 };
 
@@ -13,7 +14,7 @@ export default function GameStateProvider({ children }) {
 	const [userSate, dispatch] = useReducer(reducer, getState() || initialState);
 
 	useEffect(() => {
-		if (!getState()) setState(initialState);
+		if (!getState() || getState().version !== pkg.version) setState(initialState);
 	}, []);
 
 	return (

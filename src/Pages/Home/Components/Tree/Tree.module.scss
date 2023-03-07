@@ -1,0 +1,12 @@
+.treeContainer {
+  overflow: auto;
+
+  svg {
+    width: 100vmin;
+    height: 100vmin;
+
+    * {
+      color: green;
+    }
+  }
+}
