@@ -39,12 +39,13 @@ const Toast = Swal.mixin({
 	}
 });
 
-export default function GuessTheNumber() {
+export default function GuessTheNumber({ setModalSize }) {
 	const [currentWindow, setCurrentWindow] = useState(WINDOWS.menu);
-
 	const [difficulty, setDifficulty] = useState("Normal");
 	const [betValueIndex, setBetValueIndex] = useState(1);
 	const [betValue, setBetValue] = useState(AVAILABLE_VALUES[betValueIndex]);
+
+	useEffect(() => setModalSize({ width: 500, height: 500 }), [setModalSize]);
 
 	useEffect(() => { setBetValue(AVAILABLE_VALUES[betValueIndex]); }, [betValue, betValueIndex]);
 

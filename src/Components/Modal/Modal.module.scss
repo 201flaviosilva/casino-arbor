@@ -8,8 +8,10 @@
   background-color: rgba(0, 0, 0, 0.5);
 
   .container {
-    width: 90%;
-    height: 95%;
+    max-width: 90% !important;
+    max-height: 95% !important;
+    min-width: 320px !important;
+    min-height: 500px !important;
     position: absolute;
     left: 50%;
     top: 50%;

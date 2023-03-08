@@ -125,8 +125,7 @@ $FONT-FAMILY: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
 
   ul.attemptsList {
-    max-height: 500px;
-    min-height: 250px;
+    height: 300px;
     width: 90%;
     display: flex;
     flex-direction: column;

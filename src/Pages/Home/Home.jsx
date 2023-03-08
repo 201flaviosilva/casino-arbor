@@ -14,6 +14,7 @@ import MODAL_NAMES from "./ModalNames";
 
 export default function Home() {
 	const [modal, setModal] = useState(null);
+	const [modalSize, setModalSize] = useState({ width: 90, height: 95 });
 
 	return (
 		<TreeSateStateProvider>
@@ -26,10 +27,10 @@ export default function Home() {
 			</div>
 
 			{
-				modal && <Modal setIsOpen={setModal} title={modal}>
-					{modal === MODAL_NAMES.upgrade && <Upgrade />}
-					{modal === MODAL_NAMES.guessTheNumber && <GuessTheNumber />}
-					{modal === MODAL_NAMES.coinFlip && <CoinFlip />}
+				modal && <Modal setIsOpen={setModal} title={modal} size={modalSize}>
+					{modal === MODAL_NAMES.upgrade && <Upgrade setModalSize={setModalSize} />}
+					{modal === MODAL_NAMES.guessTheNumber && <GuessTheNumber setModalSize={setModalSize} />}
+					{modal === MODAL_NAMES.coinFlip && <CoinFlip setModalSize={setModalSize} />}
 				</Modal>
 			}
 
