@@ -5,9 +5,14 @@ module.exports = {
 		"es2021": true,
 		"jest": true,
 	},
+	"plugins": [
+		"react",
+		"eslint-plugin-react",
+	],
 	"extends": [
 		"eslint:recommended",
 		"plugin:import/recommended",
+		"plugin:jsx-a11y/recommended",
 		"react-app",
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
@@ -19,10 +24,6 @@ module.exports = {
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
-	"plugins": [
-		"react",
-		"eslint-plugin-react",
-	],
 	"rules": {
 		"react/jsx-uses-react": "error",
 		"react/react-in-jsx-scope": "off",

@@ -1,13 +1,11 @@
 import moment from "moment";
 import React, { createContext, useCallback, useContext, useEffect, useReducer } from "react";
 import pkg from "../../../package.json";
-
-import reducer, { SET_EXPERIENCE, SET_LAST_UPDATE } from "./Reducer";
-import { getState, setState } from "./StoreManager";
-
 import { SET_COINS } from "../User/Reducer";
 import { useUserState } from "../User/UserState";
 import { getCurrentLevel } from "./levels";
+import reducer, { SET_EXPERIENCE, SET_LAST_UPDATE } from "./Reducer";
+import { getState, setState } from "./StoreManager";
 
 const initialState = {
 	version: pkg.version,
