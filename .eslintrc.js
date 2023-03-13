@@ -6,8 +6,9 @@ module.exports = {
 		"jest": true,
 	},
 	"extends": [
-		"react-app",
 		"eslint:recommended",
+		"plugin:import/recommended",
+		"react-app",
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
 	],
@@ -30,11 +31,23 @@ module.exports = {
 		"linebreak-style": ["warn", "unix"],
 		"quotes": ["warn", "double"],
 		"semi": ["warn", "always"],
-		"no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+		"no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+		"import/no-unresolved": ["error", { "ignore": ["^[^.]"] }],
+		"import/order": [
+			"warn", {
+				"groups": ["builtin", "external", "object", "type", "internal", "parent", "sibling", "index",],
+				"alphabetize": { "order": "asc", "caseInsensitive": true, },
+			},
+		]
 	},
 	"settings": {
 		"react": {
 			"version": "detect",
+		},
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx"]
+			}
 		}
 	}
 };
