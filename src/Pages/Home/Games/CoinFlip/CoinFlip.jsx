@@ -91,15 +91,15 @@ export default function CoinFlip({ setModalSize }) {
 				<h3>Bet in:</h3>
 
 				<div className={styles.betSelected}>
-					<span
+					<button
 						onClick={() => setIsBettingHeads(true)}
-						className={`${isBettingHeads && styles.active}`}>Heads</span>
+						className={`${isBettingHeads && styles.active}`}>Heads</button>
 					<button onClick={() => setIsBettingHeads(p => !p)}>
 						{isBettingHeads ? <FaToggleOff size={ICON_SIZE} /> : <FaToggleOn size={ICON_SIZE} />}
 					</button>
-					<span
+					<button
 						onClick={() => setIsBettingHeads(false)}
-						className={`${!isBettingHeads && styles.active}`}>Tails</span>
+						className={`${!isBettingHeads && styles.active}`}>Tails</button>
 				</div>
 
 				<ButtonIcon

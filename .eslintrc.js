@@ -29,6 +29,7 @@ module.exports = {
 		"react/react-in-jsx-scope": "off",
 		"react/jsx-uses-vars": "error",
 		"react/prop-types": "off",
+		"jsx-a11y/click-events-have-key-events": "warn",
 		"linebreak-style": ["warn", "unix"],
 		"quotes": ["warn", "double"],
 		"semi": ["warn", "always"],
